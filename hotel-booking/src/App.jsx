@@ -39,7 +39,8 @@ import AllBookings from "./pages/Bookings/AllBookings";
 import BookingSuccess from "./pages/BookingSuccess/BookingSuccess";
 
 // Payment
-import Payment from "./pages/payment/payment";
+import Payment from "./pages/Payment/Payment";
+
 
 // Users
 import UserList from "./pages/Users/UserList";
