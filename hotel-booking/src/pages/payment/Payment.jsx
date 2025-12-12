@@ -1,5 +1,5 @@
 
-
+// This is payment screen 
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Payment() {
