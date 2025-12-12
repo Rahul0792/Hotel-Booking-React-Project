@@ -39,7 +39,7 @@ import AllBookings from "./pages/Bookings/AllBookings";
 import BookingSuccess from "./pages/BookingSuccess/BookingSuccess";
 
 // Payment
-import Payment from "./pages/Payment/Payment";
+import Payment from "./pages/payment/Payment";
 
 
 // Users
