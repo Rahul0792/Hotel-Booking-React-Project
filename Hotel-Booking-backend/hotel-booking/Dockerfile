@@ -21,8 +21,8 @@ WORKDIR /app
 # Copy generated jar
 COPY --from=builder /app/target/*.jar app.jar
 
-# Expose (Render uses PORT env variable)
+# Expose default port (Render overrides with PORT env variable)
 EXPOSE 8080
 
-# Start the application
-ENTRYPOINT ["java","-jar","app.jar"]
+# IMPORTANT: Bind to Render PORT
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
