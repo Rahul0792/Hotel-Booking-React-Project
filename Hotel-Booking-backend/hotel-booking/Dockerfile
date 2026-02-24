@@ -22,14 +22,8 @@ WORKDIR /app
 # Copy jar from builder
 COPY --from=builder /app/target/*.jar app.jar
 
-# Render provides PORT env variable
-EXPOSE 8080
+# IMPORTANT: expose Render PORT (not fixed 8080)
+EXPOSE ${PORT}
 
-# Optimized startup for Render (prevents timeout)
-ENTRYPOINT ["sh", "-c", "java \
--Dserver.port=${PORT:-8080} \
--Dspring.datasource.hikari.initializationFailTimeout=0 \
--Dspring.jpa.defer-datasource-initialization=true \
--Dspring.main.lazy-initialization=true \
--Djava.security.egd=file:/dev/./urandom \
--jar app.jar"]
+# CRITICAL FIX: bind explicitly to Render port
+CMD ["sh", "-c", "java -Dserver.port=$PORT -Dserver.address=0.0.0.0 -jar app.jar"]
